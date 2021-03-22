@@ -1,3 +1,5 @@
+require 'pry'
+
 class Doctor
     attr_accessor :name
 
@@ -17,7 +19,7 @@ class Doctor
     end
 
     def patients
-        appointments.collect {|appointment| appointment.patient}
+        Patient.all.select {|patient| patient.doctor == self}
     end
 
     def new_appointment(patient, date)
